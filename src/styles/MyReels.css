@@ -1,0 +1,145 @@
+/* --- My Reels Management Section --- */
+.meals-management {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.meals-management h2 {
+    font-size: 1.8rem;
+    color: #1a1a2e;
+    margin-bottom: 20px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e1e1e1;
+}
+
+/* Grid Layout for Reels */
+.meals-management .meals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 10px 0 30px 0;
+    width: 100%;
+}
+
+/* Individual Card */
+.meals-management .meal-edit-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+}
+
+.meals-management .meal-edit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* Video Thumbnail */
+.meals-management .meal-preview {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    background: #000;
+    display: block;
+    border-radius: 0; /* Overrides any global radius */
+}
+
+/* Card Details */
+.meals-management .meal-details {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.meals-management .meal-details h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    color: #2f3542;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meals-management .price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2ed573;
+    margin: 0 0 16px 0;
+}
+
+/* Action Buttons */
+.meals-management .edit-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.meals-management .btn-edit, 
+.meals-management .btn-delete {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meals-management .btn-edit {
+    background: #f1f2f6;
+    color: #2f3542;
+}
+
+.meals-management .btn-edit:hover {
+    background: #e4e7eb;
+    transform: scale(1.02);
+}
+
+.meals-management .btn-delete {
+    background: #ffeaa7;
+    color: #ff4757;
+}
+
+.meals-management .btn-delete:hover {
+    background: #ff7675;
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .meals-management .meals-list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .meals-management .meals-list {
+        grid-template-columns: 1fr 1fr; /* Exactly 2 columns on phones */
+        gap: 12px;
+    }
+    .meals-management .meal-details { padding: 12px; }
+    .meals-management .meal-details h4 { font-size: 0.95rem; }
+    .meals-management .price {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    .meals-management .btn-edit, 
+    .meals-management .btn-delete { padding: 8px; font-size: 0.85rem; }
+    .meals-management h2 { font-size: 1.5rem; margin-bottom: 16px; }
+}

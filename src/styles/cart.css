@@ -1,0 +1,326 @@
+:root {
+    --primary: #ff4757;
+    --primary-hover: #ff2e44;
+    --bg-light: #f8f9fa;
+    --text-main: #2f3542;
+    --text-muted: #747d8c;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.cart-page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.cart-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--primary);
+    width: fit-content;
+    padding-bottom: 5px;
+}
+
+/* Layout Grid */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Item Card Styling */
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    gap: 25px;
+}
+
+.cart-item-card:hover {
+    transform: translateY(-5px);
+}
+
+.item-media {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+}
+
+.item-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    background: #000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.info-top h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.del-btn {
+    background: #fff5f6;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: 10px;
+    color: var(--primary);
+    transition: all 0.2s;
+}
+
+.del-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.item-category {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.info-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.item-price {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+/* Quantity Picker */
+.qty-picker {
+    display: flex;
+    align-items: center;
+    background: #f1f2f6;
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid #e1e4e8;
+}
+
+.qty-picker button {
+    border: none;
+    background: white;
+    color: var(--text-main);
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.qty-picker button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.qty-picker span {
+    padding: 0 15px;
+    font-weight: 700;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Summary Box */
+.cart-summary {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 20px;
+}
+
+.cart-summary h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 18px 0;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.summary-row.total {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 71, 87, 0.2);
+}
+
+/* Empty State */
+.empty-cart-container {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.continue-btn {
+    padding: 15px 40px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* --- Responsive Media Queries --- */
+
+@media (max-width: 1024px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-summary {
+        position: static;
+        max-width: 500px;
+        margin: 20px auto 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-item-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .item-media {
+        width: 100%;
+        height: 220px;
+    }
+
+    .info-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .info-bottom {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cart-title {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.partner-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.partner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ff4757; /* FoodReel theme color */
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.partner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.partner-info h2 {
+    font-size: 1.1rem;
+    color: #2d3436;
+}
+
+.partner-subtotal {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+.partner-subtotal span {
+    font-weight: 800;
+    color: #2d3436;
+}
+
+.user-id-text {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #b2bec3;
+}

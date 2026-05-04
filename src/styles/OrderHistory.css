@@ -1,0 +1,138 @@
+.partner-orders-wrapper {
+    padding: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin: 0;
+}
+
+.page-header p {
+    color: #636e72;
+    margin-top: 5px;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 25px;
+}
+
+.partner-order-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 1px solid #edf2f7;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.customer-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-icon {
+    background: #dfe6e9;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.customer-chip h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #2d3436;
+}
+
+.customer-chip p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #636e72;
+}
+
+.shipping-info {
+    font-size: 0.85rem;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    color: #2d3436;
+}
+
+.partner-items-list {
+    border-top: 1px dashed #dfe6e9;
+    padding-top: 15px;
+}
+
+.partner-item-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.item-main {
+    display: flex;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.qty-badge {
+    color: #ff4757;
+}
+
+.card-footer {
+    border-top: 1px solid #edf2f7;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.earnings-box span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #636e72;
+    font-weight: 700;
+}
+
+.earnings-box h3 {
+    margin: 0;
+    color: #ff4757;
+    font-size: 1.5rem;
+}
+
+.order-status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.order-status-badge.pending { background: #fff3cd; color: #856404; }
+.order-status-badge.completed { background: #d4edda; color: #155724; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .partner-orders-wrapper { padding: 15px; }
+    .orders-grid { grid-template-columns: 1fr; }
+}

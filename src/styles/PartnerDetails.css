@@ -1,0 +1,193 @@
+.partner-details-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hero Section */
+.partner-hero {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 40px;
+    border-radius: 24px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.partner-logo-large {
+    width: 100px;
+    height: 100px;
+    background: #ff4757;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.partner-title h1 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.owner-name {
+    opacity: 0.8;
+    margin: 5px 0;
+}
+
+.badge-verified {
+    display: inline-block;
+    background: #2ed573;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* Info Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.info-card h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #2f3542;
+    border-bottom: 1px solid #f1f2f6;
+    padding-bottom: 10px;
+}
+
+.info-row {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: #a4b0be;
+    font-weight: 600;
+}
+
+.info-row p {
+    margin-top: 4px;
+    color: #2f3542;
+    font-weight: 500;
+}
+
+/* Stats Styling */
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-val {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ff4757;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #747d8c;
+}
+
+/* Footer Actions */
+.action-footer {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.primary-btn { background: #ff4757; color: white; flex: 2; }
+.secondary-btn { background: #f1f2f6; color: #2f3542; flex: 1; }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .partner-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .action-footer {
+        flex-direction: column;
+    }
+}
+
+/* Input Styles */
+.edit-input, .edit-textarea, .edit-input-hero {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.edit-input-hero {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.edit-input:focus, .edit-textarea:focus {
+    border-color: #ff4757;
+}
+
+.edit-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.locked-field {
+    color: #a4b0be !important;
+    font-style: italic;
+}
+
+/* Save Button */
+.save-btn {
+    background: #2ed573;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    flex: 2;
+}
+
+.save-btn:hover {
+    background: #26af5e;
+}

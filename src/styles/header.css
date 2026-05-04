@@ -1,0 +1,184 @@
+/* Glassmorphism Navbar Base */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Brand Logo Styling */
+.nav-brand {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #2d3436;
+    letter-spacing: -1px;
+}
+
+.nav-brand span {
+    color: #ff4757; /* FoodReel Signature Red */
+}
+
+/* Action Container */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #2d3436;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ff4757;
+}
+
+/* Cart Icon & Badge Logic */
+.cart-icon-wrapper {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 10px;
+    background: #f1f2f6;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.cart-icon-wrapper:hover {
+    transform: translateY(-2px);
+}
+
+.cart-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-icon {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #2d3436;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+
+/* User & Partner Sections */
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 2px solid #eee;
+    padding-left: 20px;
+}
+
+.user-name {
+    font-weight: 700;
+    color: #2d3436;
+    cursor: pointer;
+}
+
+.logout-btn {
+    background: #2d3436;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #ff4757;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+}
+
+.login-link {
+    background: #ff4757;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+}
+
+/* Responsive Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #2d3436;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-actions {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        height: calc(100vh - 70px);
+        gap: 30px;
+        padding-top: 50px;
+        transition: 0.4s;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-actions.active {
+        left: 0;
+    }
+
+    .user-section {
+        flex-direction: column;
+        border-left: none;
+        padding-left: 0;
+    }
+    
+    .cart-icon-wrapper {
+        width: 25%;
+        justify-content: center;
+    }
+}

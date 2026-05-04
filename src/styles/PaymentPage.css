@@ -1,0 +1,158 @@
+.orders-page-wrapper {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.orders-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 30px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+/* Header Section */
+.order-header {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.order-id-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #b2bec3;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.order-id {
+    font-size: 1rem;
+    color: #2d3436;
+    margin: 4px 0;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-badge.paid { background: #e6faf4; color: #00b894; }
+.status-badge.pending { background: #fff4e6; color: #fd9644; }
+
+.order-shipping { text-align: right; max-width: 250px; }
+.order-shipping .label { font-size: 0.75rem; color: #636e72; font-weight: 600; }
+.order-shipping p { font-size: 0.85rem; color: #2d3436; margin-top: 4px; }
+
+/* Items Section */
+.order-items { padding: 10px 20px; background: #fafafa; }
+
+.item-row {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-row:last-child { border-bottom: none; }
+
+.item-video-box {
+    width: 70px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.item-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-details { flex: 1; }
+.item-details h4 { font-size: 1rem; margin-bottom: 4px; color: #2d3436; }
+.item-desc { font-size: 0.8rem; color: #636e72; margin-bottom: 8px; line-height: 1.4; }
+
+.item-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ff4757;
+}
+
+/* Footer Section */
+.order-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.total-box .label { font-size: 0.8rem; color: #636e72; display: block; }
+.total-amount { font-size: 1.4rem; font-weight: 900; color: #2d3436; }
+.order-date { font-size: 0.8rem; color: #b2bec3; }
+
+/* Responsive Queries */
+@media (max-width: 600px) {
+    .order-header { flex-direction: column; }
+    .order-shipping { text-align: left; max-width: 100%; }
+    .page-title { font-size: 1.5rem; }
+    .item-video-box { width: 60px; height: 80px; }
+}
+
+/* Styling for the Partner Separation within a single Order Card */
+.partner-order-group {
+    border-top: 1px solid #f1f1f1;
+    padding: 15px 20px;
+    background-color: #fafafa;
+}
+
+.partner-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.partner-group-header h4 {
+    margin: 0;
+    color: #2d3436;
+    font-size: 1rem;
+}
+
+.partner-subtotal {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ff4757;
+}
+
+.item-details h5 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    color: #2d3436;
+}

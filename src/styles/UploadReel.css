@@ -1,0 +1,195 @@
+/* Container - Centering & Background */
+.upload-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 1rem; /* Space for mobile edges */
+}
+
+/* The Main Card */
+.upload-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.upload-card h1 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Form Layout */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group textarea {
+    min-height: 80px;
+    resize: none;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    outline: none;
+    border-color: #ff4757;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1);
+}
+
+/* Responsive Row (Price & Category) */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side by side on desktop */
+    gap: 1rem;
+}
+
+/* Video Section Styling */
+.video-section {
+    margin-top: 0.5rem;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #f9fafb;
+    transition: background 0.3s;
+}
+
+.file-label:hover {
+    background: #f1f5f9;
+    border-color: #ff4757;
+}
+
+.file-label input {
+    display: none;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Video Preview Container */
+.video-preview-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+}
+
+.video-preview {
+    width: 100%;
+    aspect-ratio: 9 / 16; /* Portrait reel style */
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background: #ff2e44;
+}
+
+/* Submit Button */
+.submit-btn {
+    padding: 1rem;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Loader Styling */
+.loader {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ff4757;
+}
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 480px) {
+    .upload-card {
+        padding: 1.5rem;
+        border-radius: 0; /* Full screen feel on small mobile */
+        box-shadow: none;
+    }
+
+    .row {
+        grid-template-columns: 1fr; /* Stack Price & Category on mobile */
+    }
+
+    .upload-container {
+        padding: 0;
+        background: #fff;
+    }
+
+    .video-preview {
+        max-height: 350px;
+    }
+}
