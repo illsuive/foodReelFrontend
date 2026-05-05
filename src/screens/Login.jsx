@@ -74,6 +74,7 @@ const handleSubmit = async (e) => {
                             type="email"
                             placeholder="Enter your email"
                             value={email}
+                            autoComplete="username"
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
@@ -86,9 +87,9 @@ const handleSubmit = async (e) => {
                             type="password"
                             placeholder="Enter your password"
                             value={password}
+                            autoComplete="current-password"
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            autoComplete="current-password"
                         />
                     </div>
                     <button type="submit" className="submit-btn">

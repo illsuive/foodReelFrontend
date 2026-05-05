@@ -105,6 +105,7 @@ const Register = () => {
                         <input 
                             id="email" name="email" type="email" 
                             value={role === 'user' ? userData.email : foodPartnerData.email}
+                            autoComplete="username"
                             onChange={handleInputChange} required 
                         />
                     </div>
@@ -134,6 +135,7 @@ const Register = () => {
                         <input 
                             id="password" name="password" type="password" 
                             value={role === 'user' ? userData.password : foodPartnerData.password}
+                            autoComplete="new-password"
                             onChange={handleInputChange} required 
                         />
                     </div>
