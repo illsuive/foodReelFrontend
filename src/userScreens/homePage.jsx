@@ -14,13 +14,12 @@ const UserHomePage = () => {
     const { reels } = useSelector((state) => state.food);
     // 1. cartData now contains { userId, totalAmount, groupedItems }
     const { items: cartData } = useSelector((state) => state.cart);
-// console.log(user);
 
     const videoRefs = useRef([]);
 
     const fetchAllReels = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/food/all`);
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/food/all` , { withCredentials: true });
             if (res.data.success) {
                 dispatch(setReels(res.data.foods));
             }

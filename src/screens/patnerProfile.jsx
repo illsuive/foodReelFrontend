@@ -18,7 +18,9 @@ const PatnerProfile = () => {
 
     const fetchPartnerProfile = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/food-partner/${id}`);
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/food-partner/${id}`, {
+                withCredentials: true
+            });
             if (res.data.success) {
                 setPartnerProfile(res.data.foodPartner);
             }

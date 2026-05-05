@@ -46,7 +46,8 @@ const Register = () => {
             const response = await axios.post(url, data , {
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                withCredentials: true
             });
             toast.success('Registration successful!');
             

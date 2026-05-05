@@ -84,7 +84,9 @@ const UploadReel = () => {
                 setVideoPreview(null);  
                 
                 try {
-                    const profileRes = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/food-partner/${FoodPatner._id}`);
+                    const profileRes = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/food-partner/${FoodPatner._id}`, {
+                        withCredentials: true
+                    });
                     if (profileRes.data.success) {
                         dispatch(loginAsFoodPartner(profileRes.data.foodPartner));
                     }
