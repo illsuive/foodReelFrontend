@@ -12,7 +12,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
     const { user, FoodPatner } = useSelector((state) => state.auth);
     
-    // cartData now uses the grouped structure: { totalAmount, groupedItems }
+    // Using the grouped items structure from your cart
     const { items: cartData } = useSelector((state) => state.cart);
 
     const HandleLogout = async () => {
@@ -25,70 +25,74 @@ const Header = () => {
             } else if (FoodPatner) {
                 await axios.get(partnerUrl, { withCredentials: true });
             }
+            
+            // 1. Dispatch Logout to clear Redux
             dispatch(logOut());
+            
+            // 2. Clear persistence to prevent "previous user" data leakage
+            localStorage.removeItem('persist:root');
+            
             setIsMenuOpen(false);
             toast.success('Logout successful!');
-            navigate('/login');
+            
+            // 3. Force reload to login to ensure all state is wiped
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 500);
         } catch (error) {
             toast.error(error.response?.data?.message || 'Logout failed');
         }
     };
 
-    // Calculate total items across all groups for the badge
-    const totalCartItems = cartData?.groupedItems?.reduce((sum, group) => {
-        return sum + group.items.length;
-    }, 0) || 0;
+    // Calculate total unique items from grouped structure
+    const cartCount = cartData?.groupedItems?.reduce((sum, group) => sum + group.items.length, 0) || 0;
 
     return (
         <nav className="navbar">
-            <Link to={'/'} className="nav-logo-link" onClick={() => setIsMenuOpen(false)}>
-                <div className="nav-brand">
+            <div className="nav-container">
+                {/* Company Logo */}
+                <Link to="/" className="nav-logo" onClick={() => setIsMenuOpen(false)}>
                     Food<span>Reel</span>
+                </Link>
+
+                {/* Mobile Toggle */}
+                <div className={`menu-toggle ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
                 </div>
-            </Link>
 
-            <div className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <span className={isMenuOpen ? "bar open" : "bar"}></span>
-                <span className={isMenuOpen ? "bar open" : "bar"}></span>
-                <span className={isMenuOpen ? "bar open" : "bar"}></span>
-            </div>
-
-            <div className={`nav-actions ${isMenuOpen ? "active" : ""}`}>
-                {/* 1. If USER is logged in: Show Orders, Cart, and Logout */}
-                {user && (
-                    <>
-                        <Link to="/orders" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                            My Orders
-                        </Link>
-                        <div className="cart-icon-wrapper" onClick={() => setIsMenuOpen(false) || navigate('/cart')}>
-                            <div className="cart-badge-container">
-                                {totalCartItems > 0 && (
-                                    <span className="cart-badge">{totalCartItems}</span>
-                                )}
-                                <span className="cart-icon">🛒 cart</span>
+                <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+                    {user ? (
+                        /* --- USER NAVBAR --- */
+                        <div className="nav-actions">
+                            <Link to="/orders" className="nav-link" onClick={() => setIsMenuOpen(false)}>My Orders</Link>
+                            <div className="cart-wrapper" onClick={() => {navigate('/cart'); setIsMenuOpen(false)}}>
+                                <span className="cart-icon">🛒</span>
+                                {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+                            </div>
+                            <div className="user-profile-section" onClick={()=> navigate(`/user-profile/${user._id}`) || setIsMenuOpen(false)}>
+                                <span className="user-name">Hi, {user.fullName?.split(' ')[0]}</span>
+                                <button className="logout-btn" onClick={HandleLogout}>Logout</button>
                             </div>
                         </div>
-                        <div className="user-section" onClick={()=> navigate(`/user-profile/${user.id}`) || setIsMenuOpen(false)}>
-                            <span className="user-name">Hi, {user.fullName.split(' ')[0]}</span>
-                            <button onClick={HandleLogout} className="logout-btn">Logout</button>
+                    ) : FoodPatner ? (
+                        /* --- FOOD PARTNER NAVBAR --- */
+                        <div className="nav-actions">
+                            {/* <Link to="/partner/dashboard" className="nav-link" onClick={() => setIsMenuOpen(false)}>Dashboard</Link> */}
+                            <div className="user-profile-section" onClick={() => setIsMenuOpen(false)}>
+                                <span className="partner-badge">Partner</span>
+                                <span className="user-name" onClick={()=> navigate(`/user-profile/${FoodPatner._id}`)}>{FoodPatner.restaurant}</span>
+                                <button className="logout-btn" onClick={HandleLogout}>Logout</button>
+                            </div>
                         </div>
-                    </>
-                )}
-
-                {/* 2. If FOOD PARTNER is logged in: Show only Name and Logout */}
-                {FoodPatner && (
-                    <div className="user-section" onClick={()=> navigate(`/user-profile/${FoodPatner._id}`) || setIsMenuOpen(false)}>
-                        <span className="user-name">Hi, {FoodPatner.fullName.split(' ')[0]}</span>
-                        <button onClick={HandleLogout} className="logout-btn">Logout</button>
-                    </div>
-                )}
-
-                {/* 3. If NO ONE is logged in: Show Login */}
-                {!user && !FoodPatner && (
-                    <div className="login-link" onClick={() => setIsMenuOpen(false) || navigate('/login')}>
-                        Login
-                    </div>
-                )}
+                    ) : (
+                        /* --- LOGGED OUT / LOGIN BUTTON --- */
+                        <div className="nav-auth">
+                            <Link to="/login" className="login-btn" onClick={() => setIsMenuOpen(false)}>Login</Link>
+                        </div>
+                    )}
+                </div>
             </div>
         </nav>
     );

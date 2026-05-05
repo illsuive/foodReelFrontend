@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, use } from "react";
 import '../styles/userHomePage.css'
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -14,9 +14,8 @@ const UserHomePage = () => {
     const { reels } = useSelector((state) => state.food);
     // 1. cartData now contains { userId, totalAmount, groupedItems }
     const { items: cartData } = useSelector((state) => state.cart);
+// console.log(user);
 
-
-    
     const videoRefs = useRef([]);
 
     const fetchAllReels = async () => {
@@ -40,7 +39,6 @@ const UserHomePage = () => {
             }
             const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add`, payload, { withCredentials: true });
             if (res.data.success) {
-                // Backend returns the NEW grouped structure
                 dispatch(fetchCart(res.data.cart));
                 toast.success('Added to cart');
             }

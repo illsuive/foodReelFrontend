@@ -4,13 +4,13 @@ import {  useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const UserProfile = ({ user, loading }) => {
     const { user: userData } = useSelector((state) => state.auth);
+    
     const navigate = useNavigate();
     // If you're fetching data, show a loading state
     if (loading) return <div className="loading">Loading Profile...</div>;
     
     // Fallback if user data hasn't arrived yet
     if (!user) return <div className="error">No user data found.</div>;
-
 
     return (    
         <div className="profile-wrapper">

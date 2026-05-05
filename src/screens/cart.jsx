@@ -9,15 +9,15 @@ import '../styles/cart.css';
 const CartPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+    const { user } = useSelector((state) => state.auth);
     // Accessing the new structure from Redux
     const { items: cartData, loading } = useSelector((state) => state.cart);
-
+   
+    
     const getCart = async () => {
         try {
             const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/cart/get`, { withCredentials: true });
             if (res.data.success) {
-                // Sending the new structure {userId, totalAmount, groupedItems} to Redux
                 dispatch(fetchCart(res.data.cart));
             }
         } catch (error) {
@@ -36,7 +36,6 @@ const CartPage = () => {
             const res = await axios.post(urls[action], { foodId }, { withCredentials: true });
 
             if (res.data.success) {
-                // Update local state with the new grouped structure returned by backend
                 dispatch(fetchCart(res.data.cart)); 
                 if (action === 'remove') toast.success('Item removed');
             }
@@ -47,13 +46,12 @@ const CartPage = () => {
 
     useEffect(() => {
         getCart();
-    }, []);
+    }, [user]);
 
     if (loading) return <div className="loader">Loading your delicious picks...</div>;
 
-    // Use groupedItems from your new backend response
     const groupedItems = cartData?.groupedItems || [];
-
+    
     if (groupedItems.length === 0) {
         return (
             <div className="empty-cart-container">

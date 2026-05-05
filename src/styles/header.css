@@ -1,36 +1,48 @@
-/* Glassmorphism Navbar Base */
+/* --- Global Navbar Container --- */
 .navbar {
+    height: 75px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1300;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 70px;
 }
 
-/* Brand Logo Styling */
-.nav-brand {
+/* --- Branding --- */
+.nav-logo {
     font-size: 1.6rem;
     font-weight: 900;
+    text-decoration: none;
     color: #2d3436;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
-.nav-brand span {
-    color: #ff4757; /* FoodReel Signature Red */
+.nav-logo span {
+    color: #ff4757; /* Signature FoodReel Red */
 }
 
-/* Action Container */
+/* --- Navigation Menu --- */
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 25px;
 }
 
 .nav-link {
@@ -45,140 +57,168 @@
     color: #ff4757;
 }
 
-/* Cart Icon & Badge Logic */
-.cart-icon-wrapper {
-    cursor: pointer;
+/* --- Cart & Badge --- */
+.cart-wrapper {
     position: relative;
-    padding: 5px 10px;
+    cursor: pointer;
     background: #f1f2f6;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
     transition: transform 0.2s ease;
 }
 
-.cart-icon-wrapper:hover {
+.cart-wrapper:hover {
     transform: translateY(-2px);
 }
 
-.cart-badge-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
 .cart-icon {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    color: #2d3436;
+    font-size: 1.2rem;
 }
 
 .cart-badge {
     position: absolute;
-    top: -10px;
+    top: -8px;
     right: -8px;
     background: #ff4757;
     color: white;
-    font-size: 0.7rem;
+    font-size: 10px;
     font-weight: 800;
-    height: 20px;
-    width: 20px;
+    min-width: 18px;
+    height: 18px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+    padding: 2px;
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
 }
 
-/* User & Partner Sections */
-.user-section {
+/* --- User & Partner Profile Section --- */
+.user-profile-section {
     display: flex;
     align-items: center;
     gap: 15px;
-    border-left: 2px solid #eee;
+    border-left: 2px solid #f1f2f6;
     padding-left: 20px;
 }
 
 .user-name {
     font-weight: 700;
     color: #2d3436;
-    cursor: pointer;
+    font-size: 0.95rem;
 }
 
+.partner-badge {
+    background: #2f3542;
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+/* --- Buttons --- */
 .logout-btn {
+    padding: 8px 18px;
     background: #2d3436;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: 700;
     font-size: 0.85rem;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
     background: #ff4757;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2);
 }
 
-.login-link {
+.login-btn {
+    text-decoration: none;
+    padding: 10px 25px;
     background: #ff4757;
     color: white;
-    padding: 10px 25px;
     border-radius: 12px;
     font-weight: 800;
-    cursor: pointer;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
 }
 
-/* Responsive Menu Toggle */
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
+}
+
+/* --- Mobile Menu Toggle --- */
 .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .bar {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background: #2d3436;
-    border-radius: 10px;
-    transition: 0.3s;
+    border-radius: 5px;
+    transition: 0.4s ease;
 }
 
-/* Mobile Responsiveness */
+/* Toggle Animation */
+.menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* --- Tablet & Mobile Responsive Queries --- */
+@media (max-width: 992px) {
+    .nav-container { width: 95%; }
+    .nav-actions { gap: 15px; }
+}
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
     }
 
-    .nav-actions {
+    .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #ffffff;
         flex-direction: column;
-        background: white;
-        width: 100%;
-        height: calc(100vh - 70px);
-        gap: 30px;
-        padding-top: 50px;
-        transition: 0.4s;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        justify-content: flex-start;
+        padding-top: 100px;
+        transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-actions.active {
+    .nav-menu.active {
         left: 0;
     }
 
-    .user-section {
+    .nav-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .user-profile-section {
         flex-direction: column;
         border-left: none;
         padding-left: 0;
+        text-align: center;
     }
-    
-    .cart-icon-wrapper {
-        width: 25%;
-        justify-content: center;
+
+    .cart-wrapper {
+        width: fit-content;
     }
 }

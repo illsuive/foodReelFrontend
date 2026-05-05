@@ -3,7 +3,7 @@ import {createSlice } from '@reduxjs/toolkit'
 const orderSlice = createSlice({
     name: 'order',
     initialState: {
-        orders: [],
+        orders: null,
         total: 0,
         foodPatnerOrder : [],
         loading: true
@@ -13,7 +13,7 @@ const orderSlice = createSlice({
             state.items.push(action.payload);
             state.total += action.payload.price;
         },
-        fetchOrders: (state, action) => {
+        setOrders: (state, action) => {
             state.orders = action.payload;
             state.loading = false;  
         },
@@ -24,5 +24,5 @@ const orderSlice = createSlice({
     }
 })
 
-export const { addOrder, fetchOrders, fetchFoodPatnerOrder } = orderSlice.actions
+export const { addOrder, setOrders, fetchFoodPatnerOrder } = orderSlice.actions
 export default orderSlice.reducer

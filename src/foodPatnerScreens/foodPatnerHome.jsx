@@ -47,6 +47,7 @@ const FoodPatnerPage = () => {
                 <header className="content-header">
                     <div className="header-text">
                         <h1>Welcome, {FoodPatner?.fullName.split(' ')[0]}</h1>
+                        <h4>{FoodPatner?.email}</h4>
                         <p className="subtitle">Here's what's happening today</p>
                     </div>
                     <div className="user-badge">
