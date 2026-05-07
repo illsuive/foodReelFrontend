@@ -4,6 +4,7 @@ import {
     Route
 } from 'react-router-dom';
 import Login from '../screens/Login.jsx'
+import axios from 'axios';
 import Register from '../screens/Register.jsx';
 import HomePage from '../screens/home.jsx';
 import PatnerProfile from '../screens/patnerProfile.jsx';

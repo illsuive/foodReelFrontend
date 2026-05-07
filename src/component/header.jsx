@@ -31,6 +31,7 @@ const Header = () => {
             
             // 2. Clear persistence to prevent "previous user" data leakage
             localStorage.removeItem('persist:root');
+            localStorage.removeItem('token');
             
             setIsMenuOpen(false);
             toast.success('Logout successful!');

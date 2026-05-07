@@ -28,6 +28,11 @@ const handleSubmit = async (e) => {
         });
 
         if (res.data.success) {
+            // Save the token if returned by your backend
+            if (res.data.token) {
+                localStorage.setItem("token", res.data.token);
+            }
+
             if (role == `user`) {
                 toast.success('Login successful as User!');
                 dispatch(loginAsUser(res.data.user));
